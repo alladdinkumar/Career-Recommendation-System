@@ -1,31 +1,124 @@
 from tkinter import *
 import sqlite3
-root = Tk()
-root.title("HOMEPAGE")
-root.geometry("1400x700+0+0")
 
-Top = Frame(root, bd=2)
-Top.pack(side=TOP)
-image1 =PhotoImage(file="login.png")
-Form  = Label(root, image=image1)
-Form.pack(side='top', fill='both', expand='yes')
-USERNAME = StringVar()
-PASSWORD = StringVar()
-img =PhotoImage(file="login2.png")
+def HomeWindow():
+    global Home
+    
+    Fill_details()
+def Signup_window():
+    global top,window
+    
+    if window==1:
+        top.withdraw()
+    window=1
+    
+    global flag,USERNAME,PASSWORD,lbl_text 
+    
+    top=Toplevel()
+    top.geometry("1400x700+0+0")
+    top.title("SIGNUP")
+    image1 =PhotoImage(file="Signup.png")
+    
+    Form1 = Label(top, image=image1)
+    Form1.pack(side='top', fill='both', expand='yes')
+    
+    USERNAME = StringVar()
+    PASSWORD = StringVar()
+   
 
-lbl_username = Label(Form, text = "Username:", font=(14), bd=10)
-lbl_username.place(x=50,y=450)
-lbl_password = Label(Form, text = "Password:", font=(14), bd=10)
-lbl_password.place(x=50,y=530 )
-lbl_text = Label(Form)
-lbl_text.grid(row=2, columnspan=2)
- 
-username = Entry(Form, textvariable=USERNAME, font=(14))
-username.place(x=170, y=460)
-password = Entry(Form, textvariable=PASSWORD, show="*", font=(14))
-password.place(x=170, y=540)
+    lbl_username = Label(Form1, text = "Email ID:", font=(14), bd=10)
+    lbl_username.place(x=450,y=350)
+    lbl_password = Label(Form1, text = "Password:", font=(14), bd=10)
+    lbl_password.place(x=450,y=430 )
+    lbl_text = Label(Form1)
+    lbl_text.grid(row=2, columnspan=2)
 
-flag=0
+    
+   
+    username = Entry(Form1, textvariable=USERNAME, font=(14))
+    username.place(x=570, y=360)
+    password = Entry(Form1, textvariable=PASSWORD, show="*", font=(14))
+    password.place(x=570, y=440)
+    
+    btn_Signup = Button(Form1, text="Sign Up", width=45, command=Signup)
+    btn_Signup.place(x=450, y=500)
+    btn_Signup.bind('<Return>', Signup)
+    btn_login = Button(Form1, text="Sign IN", width=25, command=login_window)
+    btn_login.place(x=900, y=40)
+    btn_login.bind('<Return>',login_window )
+    top.mainloop()
+def Signup():
+        
+    if USERNAME.get() == "" or PASSWORD.get() == "":
+        lbl_text.config(text="Please complete the required field!", fg="red")
+    else:
+        Database_Signup()
+        lbl_home = Label(root, text="Successfully Registered!", font=(20)).pack()
+        login_window()
+    USERNAME.set("")
+    PASSWORD.set("")
+    #lbl_text.config(text="")
+       
+    
+def Database_Signup():
+    global conn, cursor,flag,USERNAME,PASSWORD
+    conn = sqlite3.connect("project.db")
+    cursor = conn.cursor()
+    
+    try:
+        cursor.execute("CREATE TABLE member (mem_id INTEGER NOT NULL PRIMARY KEY  AUTOINCREMENT, username TEXT, password TEXT)")
+        
+    except:
+        cursor.execute("INSERT INTO member (username, password) VALUES(?,?)",(USERNAME.get(), PASSWORD.get()))
+        
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    
+def Fill_details():
+    print("end")
+def login_window():
+    global top,window
+    if window==1:
+        top.withdraw()
+    window=1
+    global flag,USERNAME,PASSWORD,lbl_text
+    top=Toplevel()
+    top.geometry("1400x700+0+0")
+    top.title("Login")
+    image1 =PhotoImage(file="login.png")
+    
+    Form = Label(top, image=image1)
+    Form.pack(side='top', fill='both', expand='yes')
+    USERNAME = StringVar()
+    PASSWORD = StringVar()
+    
+
+    lbl_username = Label(Form, text = "Username:", font=(14), bd=10)
+    lbl_username.place(x=50,y=450)
+    lbl_password = Label(Form, text = "Password:", font=(14), bd=10)
+    lbl_password.place(x=50,y=530 )
+    lbl_text = Label(Form)
+    lbl_text.grid(row=2, columnspan=2)
+
+    
+   
+    username = Entry(Form, textvariable=USERNAME, font=(14))
+    username.place(x=170, y=460)
+    password = Entry(Form, textvariable=PASSWORD, show="*", font=(14))
+    password.place(x=170, y=540)
+    
+    flag=0
+    btn_login = Button(Form, text="Login", width=45, command=Login)
+    btn_login.place(x=50, y=600)
+    btn_login.bind('<Return>', Login)
+    btn_signup = Button(Form, text="New User Sign Up", width=25, command=Signup_window)
+    btn_signup.place(x=950, y=20)
+    btn_signup.bind('<Return>', Signup_window)
+    top.mainloop()
+
+    
 def Database():
     global conn, cursor,flag
     conn = sqlite3.connect("project.db")
@@ -39,6 +132,8 @@ def Database():
         if cursor.fetchone() is not None:
             flag=1
     conn.commit()
+    cursor.close()
+    conn.close()
 
     
     
@@ -51,32 +146,21 @@ def Login():
         if flag==1:
             lbl_home = Label(root, text="Successfully Login!", font=(20)).pack()
             HomeWindow()
-            USERNAME.set("")
-            PASSWORD.set("")
-            lbl_text.config(text="")
+            
         else:
             lbl_text.config(text="Invalid username or password", fg="red")
             USERNAME.set("")
-            PASSWORD.set("")   
-    cursor.close()
-    conn.close()
-def Signup():
-    print("Signup")
-btn_login = Button(Form, text="Login", width=45, command=Login)
-btn_login.place(x=50, y=600)
-btn_login.bind('<Return>', Login)
-btn_signup = Button(Form, text="New User Sign Up", width=25, command=Signup)
-btn_signup.place(x=950, y=20)
-btn_signup.bind('<Return>', Signup)
-Form.wm_attributes('-transparentcolor')
-if __name__ == '__main__':
-    root.mainloop()
-
-def HomeWindow():
-    global Home
-    root.withdraw()
-    Fill_details()
-def Fill_details():
-    print("end")
+            PASSWORD.set("")
+    USERNAME.set("")
+    PASSWORD.set("")
+    #lbl_text.config(text="")
     
+
+
+
+root=Tk()
+root.withdraw()
+global window
+window=0
+login_window()    
 
