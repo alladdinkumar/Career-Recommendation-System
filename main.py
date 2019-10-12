@@ -1,8 +1,65 @@
 from tkinter import *
 import sqlite3
+def show_colleges():
+    global top,window
+    
+    if window==1:
+        top.withdraw()
+    top=Toplevel()
+    top.geometry("1400x700+0+0")
+    top.title("Colleges")
+   
+    top.mainloop()
+    
+def path_selection():
+    global top,window
+    
+    if window==1:
+        top.withdraw()
+    top=Toplevel()
+    top.geometry("1400x700+0+0")
+    top.title("Pathway Selection")
+    image1 =PhotoImage(file="path.png")
+    
+    Form = Label(top, image=image1)
+    Form.pack(side='top', fill='both', expand='yes')
+    
+    OptionList=["Animation/Graphics","Business",
+                              "Computer/IT",
+                              "Engineering and Architecture",
+                              "Media/Communication",
+                             "Art/Design",
+                              "Banking",
+                              "Law School",
+                              "Education and Teaching",
+                              "Medical"]
+    variable = StringVar(top)
+    variable.set(OptionList[0])
 
+    opt = OptionMenu(top, variable, *OptionList)
+    opt.config(width=20, font=('Helvetica', 12))
+    opt.place(x=920,y=320)
+
+
+    labelTest = Label(text="", font=('Helvetica', 12), fg='white')
+    labelTest.place(x=920,y=320)
+
+    def callback(*args):
+        labelTest.configure(text="The selected item is {}".format(variable.get()))
+
+    variable.trace("w", callback)
+
+    
+   
+    btn_go = Button(Form, text="GO", width=25, command=show_colleges)
+    btn_go.place(x=950, y=400)
+    btn_go.bind('<Return>',show_colleges )
+    top.mainloop()
+    
 def HomeWindow():
-    global Home
+    print("end")
+    if window==1:
+        top.withdraw()
     
     Fill_details()
 def Signup_window():
@@ -77,7 +134,9 @@ def Database_Signup():
 
     
 def Fill_details():
-    print("end")
+    print("Inputs ")
+    path_selection()
+    
 def login_window():
     global top,window
     if window==1:
