@@ -1,5 +1,23 @@
 from tkinter import *
 import sqlite3
+def Home():
+    global top,window
+    if window==1:
+        top.withdraw()
+    window=1
+    top=Toplevel()
+    top.geometry("1467x700+0+0")
+    top.title("Home Page")
+    image1 =PhotoImage(file="students.png")
+    
+    Form = Label(top, image=image1)
+    Form.pack(side='top', fill='both', expand='yes')
+    btn_login = Button(Form, text="Sign IN", width=25, command=login_window)
+    btn_login.place(x=900, y=40)
+    btn_login.bind('<Return>',login_window )
+    top.mainloop()
+    
+    
 def show_colleges():
     global top,window
     
@@ -221,5 +239,6 @@ root=Tk()
 root.withdraw()
 global window
 window=0
+Home()
 login_window()    
 
