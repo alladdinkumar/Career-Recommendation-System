@@ -1,12 +1,155 @@
 from tkinter import *
 import sqlite3
+def fuzzy_calculator():
+    inputs=[90,28,90,27]
+    import numpy as np
+    import skfuzzy as fuzz
+    from skfuzzy import control as ctrl
+
+    theory= ctrl.Antecedent(np.arange(0,101,1),'theory')
+    practical=ctrl.Antecedent(np.arange(0,31,1,),'practical')
+    attendance= ctrl.Antecedent(np.arange(0,101,1),'attendance')
+    project= ctrl.Antecedent(np.arange(0,31,1),'project')
+    grade=ctrl.Consequent(np.arange(0,101,1),'grade')
+
+
+
+    practical['l']=fuzz.trimf(practical.universe,[0,10,15])
+    practical['m']=fuzz.trimf(practical.universe,[10,15,20])
+    practical['h']=fuzz.trimf(practical.universe,[15,20,30])
+
+    theory['l']=fuzz.trimf(theory.universe,[0,40,60])
+    theory['m']=fuzz.trimf(theory.universe,[40,60,80])
+    theory['h']=fuzz.trimf(theory.universe,[60,80,100])
+
+    attendance['l']=fuzz.trimf(attendance.universe,[0,40,60])
+    attendance['m']=fuzz.trimf(attendance.universe,[40,60,80])
+    attendance['h']=fuzz.trimf(attendance.universe,[60,80,100])
+
+    project['l']=fuzz.trimf(project.universe,[0,10,15])
+    project['m']=fuzz.trimf(project.universe,[10,15,20])
+    project['h']=fuzz.trimf(project.universe,[15,20,30])
+
+    grade['l']=fuzz.trimf(grade.universe,[0,40,60])
+    grade['m']=fuzz.trimf(grade.universe,[40,60,80])
+    grade['h']=fuzz.trimf(grade.universe,[60,80,100])
+
+    practical.view()
+    theory.view()
+    project.view()
+
+
+    rule1 = ctrl.Rule( theory['l'] & practical['l'] & attendance['l'] & project['l'] , grade['l'])
+    rule2 = ctrl.Rule( theory['l'] & practical['l'] & attendance['l'] & project['m'] , grade['l'])
+    rule3 = ctrl.Rule( theory['l'] & practical['l'] & attendance['l'] & project['h'] , grade['l'])
+    rule4 = ctrl.Rule( theory['l'] & practical['l'] & attendance['m'] & project['l'] , grade['l'])
+    rule5 = ctrl.Rule( theory['l'] & practical['l'] & attendance['m'] & project['m'] , grade['l'])
+    rule6 = ctrl.Rule( theory['l'] & practical['l'] & attendance['m'] & project['h'] , grade['m'])
+    rule7 = ctrl.Rule( theory['l'] & practical['l'] & attendance['h'] & project['l'] , grade['l'])
+    rule8 = ctrl.Rule( theory['l'] & practical['l'] & attendance['h'] & project['m'] , grade['m'])
+    rule9 = ctrl.Rule( theory['l'] & practical['l'] & attendance['h'] & project['h'] , grade['m'])
+    rule10= ctrl.Rule( theory['l'] & practical['m'] & attendance['l'] & project['l'] , grade['l'])
+    rule11= ctrl.Rule( theory['l'] & practical['m'] & attendance['l'] & project['m'] , grade['l'])
+    rule12= ctrl.Rule( theory['l'] & practical['m'] & attendance['l'] & project['h'] , grade['l'])
+    rule13= ctrl.Rule( theory['l'] & practical['m'] & attendance['m'] & project['l'] , grade['l'])
+    rule14= ctrl.Rule( theory['l'] & practical['m'] & attendance['m'] & project['m'] , grade['l'])
+    rule15= ctrl.Rule( theory['l'] & practical['m'] & attendance['m'] & project['h'] , grade['l'])
+    rule16= ctrl.Rule( theory['l'] & practical['m'] & attendance['h'] & project['l'] , grade['l'])
+    rule17= ctrl.Rule( theory['l'] & practical['m'] & attendance['h'] & project['m'] , grade['m'])
+    rule18= ctrl.Rule( theory['l'] & practical['m'] & attendance['h'] & project['h'] , grade['m'])
+    rule19= ctrl.Rule( theory['l'] & practical['h'] & attendance['l'] & project['l'] , grade['l'])
+    rule20= ctrl.Rule( theory['l'] & practical['h'] & attendance['l'] & project['m'] , grade['l'])
+    rule21= ctrl.Rule( theory['l'] & practical['h'] & attendance['l'] & project['h'] , grade['l'])
+    rule22= ctrl.Rule( theory['l'] & practical['h'] & attendance['m'] & project['l'] , grade['l'])
+    rule23= ctrl.Rule( theory['l'] & practical['h'] & attendance['m'] & project['m'] , grade['l'])
+    rule24= ctrl.Rule( theory['l'] & practical['h'] & attendance['m'] & project['h'] , grade['m'])
+    rule25= ctrl.Rule( theory['l'] & practical['h'] & attendance['h'] & project['l'] , grade['l'])
+    rule26= ctrl.Rule( theory['l'] & practical['h'] & attendance['h'] & project['m'] , grade['m'])
+    rule27= ctrl.Rule( theory['l'] & practical['h'] & attendance['h'] & project['h'] , grade['m'])
+
+    rule28= ctrl.Rule( theory['m'] & practical['l'] & attendance['l'] & project['l'] , grade['l'])
+    rule29= ctrl.Rule( theory['m'] & practical['l'] & attendance['l'] & project['m'] , grade['l'])
+    rule30= ctrl.Rule( theory['m'] & practical['l'] & attendance['l'] & project['h'] , grade['m'])
+    rule31= ctrl.Rule( theory['m'] & practical['l'] & attendance['m'] & project['l'] , grade['l'])
+    rule32= ctrl.Rule( theory['m'] & practical['l'] & attendance['m'] & project['m'] , grade['m'])
+    rule33= ctrl.Rule( theory['m'] & practical['l'] & attendance['m'] & project['h'] , grade['m'])
+    rule34= ctrl.Rule( theory['m'] & practical['l'] & attendance['h'] & project['l'] , grade['l'])
+    rule35= ctrl.Rule( theory['m'] & practical['l'] & attendance['h'] & project['m'] , grade['l'])
+    rule36= ctrl.Rule( theory['m'] & practical['l'] & attendance['h'] & project['h'] , grade['m'])
+    rule37= ctrl.Rule( theory['m'] & practical['m'] & attendance['l'] & project['l'] , grade['l'])
+    rule38= ctrl.Rule( theory['m'] & practical['m'] & attendance['l'] & project['m'] , grade['l'])
+    rule39= ctrl.Rule( theory['m'] & practical['m'] & attendance['l'] & project['h'] , grade['m'])
+    rule40= ctrl.Rule( theory['m'] & practical['m'] & attendance['m'] & project['l'] , grade['m'])
+    rule41= ctrl.Rule( theory['m'] & practical['m'] & attendance['m'] & project['m'] , grade['m'])
+    rule42= ctrl.Rule( theory['m'] & practical['m'] & attendance['m'] & project['h'] , grade['m'])
+    rule43= ctrl.Rule( theory['m'] & practical['m'] & attendance['h'] & project['l'] , grade['m'])
+    rule44= ctrl.Rule( theory['m'] & practical['m'] & attendance['h'] & project['m'] , grade['m'])
+    rule45= ctrl.Rule( theory['m'] & practical['m'] & attendance['h'] & project['h'] , grade['h'])
+    rule46= ctrl.Rule( theory['m'] & practical['h'] & attendance['l'] & project['l'] , grade['l'])
+    rule47= ctrl.Rule( theory['m'] & practical['h'] & attendance['l'] & project['m'] , grade['m'])
+    rule48= ctrl.Rule( theory['m'] & practical['h'] & attendance['l'] & project['h'] , grade['m'])
+    rule49= ctrl.Rule( theory['m'] & practical['h'] & attendance['m'] & project['l'] , grade['m'])
+    rule50= ctrl.Rule( theory['m'] & practical['h'] & attendance['m'] & project['m'] , grade['m'])
+    rule51= ctrl.Rule( theory['m'] & practical['h'] & attendance['m'] & project['h'] , grade['m'])
+    rule52= ctrl.Rule( theory['m'] & practical['h'] & attendance['h'] & project['l'] , grade['m'])
+    rule53= ctrl.Rule( theory['m'] & practical['h'] & attendance['h'] & project['m'] , grade['h'])
+    rule54= ctrl.Rule( theory['m'] & practical['h'] & attendance['h'] & project['h'] , grade['h'])
+
+    rule55= ctrl.Rule( theory['h'] & practical['l'] & attendance['l'] & project['l'] , grade['l'])
+    rule56= ctrl.Rule( theory['h'] & practical['l'] & attendance['l'] & project['m'] , grade['l'])
+    rule57= ctrl.Rule( theory['h'] & practical['l'] & attendance['l'] & project['h'] , grade['l'])
+    rule58= ctrl.Rule( theory['h'] & practical['l'] & attendance['m'] & project['l'] , grade['l'])
+    rule59= ctrl.Rule( theory['h'] & practical['l'] & attendance['m'] & project['m'] , grade['m'])
+    rule60= ctrl.Rule( theory['h'] & practical['l'] & attendance['m'] & project['h'] , grade['m'])
+    rule61= ctrl.Rule( theory['h'] & practical['l'] & attendance['h'] & project['l'] , grade['l'])
+    rule62= ctrl.Rule( theory['h'] & practical['l'] & attendance['h'] & project['m'] , grade['m'])
+    rule63= ctrl.Rule( theory['h'] & practical['l'] & attendance['h'] & project['h'] , grade['m'])
+    rule64= ctrl.Rule( theory['h'] & practical['m'] & attendance['l'] & project['l'] , grade['l'])
+    rule65= ctrl.Rule( theory['h'] & practical['m'] & attendance['l'] & project['m'] , grade['m'])
+    rule66= ctrl.Rule( theory['h'] & practical['m'] & attendance['l'] & project['h'] , grade['m'])
+    rule67= ctrl.Rule( theory['h'] & practical['m'] & attendance['m'] & project['l'] , grade['m'])
+    rule68= ctrl.Rule( theory['h'] & practical['m'] & attendance['m'] & project['m'] , grade['m'])
+    rule69= ctrl.Rule( theory['h'] & practical['m'] & attendance['m'] & project['h'] , grade['h'])
+    rule70= ctrl.Rule( theory['h'] & practical['m'] & attendance['h'] & project['l'] , grade['m'])
+    rule71= ctrl.Rule( theory['h'] & practical['m'] & attendance['h'] & project['m'] , grade['m'])
+    rule72= ctrl.Rule( theory['h'] & practical['m'] & attendance['h'] & project['h'] , grade['h'])
+    rule73= ctrl.Rule( theory['h'] & practical['h'] & attendance['l'] & project['l'] , grade['m'])
+    rule74= ctrl.Rule( theory['h'] & practical['h'] & attendance['l'] & project['m'] , grade['m'])
+    rule75= ctrl.Rule( theory['h'] & practical['h'] & attendance['l'] & project['h'] , grade['h'])
+    rule76= ctrl.Rule( theory['h'] & practical['h'] & attendance['m'] & project['l'] , grade['m'])
+    rule77= ctrl.Rule( theory['h'] & practical['h'] & attendance['m'] & project['m'] , grade['m'])
+    rule78= ctrl.Rule( theory['h'] & practical['h'] & attendance['m'] & project['h'] , grade['h'])
+    rule79= ctrl.Rule( theory['h'] & practical['h'] & attendance['h'] & project['l'] , grade['h'])
+    rule80= ctrl.Rule( theory['h'] & practical['h'] & attendance['h'] & project['m'] , grade['h'])
+    rule81= ctrl.Rule( theory['h'] & practical['h'] & attendance['h'] & project['h'] , grade['h'])
+
+
+
+    wm_ctrl= ctrl.ControlSystem([rule1,rule2,rule3,rule4,rule5,rule6,rule7,rule8,rule9,rule10,rule11,rule12,rule13,rule14,rule15,rule16,rule17,rule18,rule19,rule20,rule21,rule22,rule23,rule24,rule25,rule26,rule27,rule28,rule29,rule30,rule31,rule32,rule33,rule34,rule35,rule36,rule37
+                                ,rule38,rule39,rule40,rule41,rule42,rule43,rule44,rule45,rule46,rule47,rule48,rule49,rule50,rule51,rule52,rule53,rule54,rule55,rule56,rule57,rule58,rule59,rule60,rule61,rule62,rule63,rule64,rule65,rule66,rule67,rule68,rule69,rule70,rule71,rule72,rule73,rule74
+                                ,rule75,rule76,rule77,rule78,rule79,rule80,rule81])
+    wm= ctrl.ControlSystemSimulation(wm_ctrl)
+
+    wm.input['theory']=inputs[0]
+    wm.input['practical']=inputs[1]
+    wm.input['attendance']=inputs[3]
+    wm.input['project']=inputs[4]
+
+    wm.compute()
+    out=wm.output['grade']
+    print(out)
+    grade.view(sim=wm)
+
+
+
+
 def Home():
     global top,window
     if window==1:
         top.withdraw()
     window=1
     top=Toplevel()
-    top.geometry("1467x700+0+0")
+    top.geometry("1400x743+0+0")
     top.title("Home Page")
     image1 =PhotoImage(file="students.png")
     
@@ -240,5 +383,5 @@ root.withdraw()
 global window
 window=0
 Home()
-login_window()    
+   
 
