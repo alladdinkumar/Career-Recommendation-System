@@ -15,24 +15,24 @@ def fuzzy_calculator():
 
 
     practical['l']=fuzz.trimf(practical.universe,[0,10,15])
-    practical['m']=fuzz.trimf(practical.universe,[10,15,20])
-    practical['h']=fuzz.trimf(practical.universe,[15,20,30])
+    practical['m']=fuzz.trimf(practical.universe,[12,15,24])
+    practical['h']=fuzz.trimf(practical.universe,[22,26,30])
 
-    theory['l']=fuzz.trimf(theory.universe,[0,40,60])
-    theory['m']=fuzz.trimf(theory.universe,[40,60,80])
-    theory['h']=fuzz.trimf(theory.universe,[60,80,100])
+    theory['l']=fuzz.trimf(theory.universe,[0,40,50])
+    theory['m']=fuzz.trimf(theory.universe,[45,65,80])
+    theory['h']=fuzz.trimf(theory.universe,[75,85,100])
 
-    attendance['l']=fuzz.trimf(attendance.universe,[0,40,60])
-    attendance['m']=fuzz.trimf(attendance.universe,[40,60,80])
-    attendance['h']=fuzz.trimf(attendance.universe,[60,80,100])
+    attendance['l']=fuzz.trimf(attendance.universe,[0,40,50])
+    attendance['m']=fuzz.trimf(attendance.universe,[45,65,80])
+    attendance['h']=fuzz.trimf(attendance.universe,[75,85,100])
 
     project['l']=fuzz.trimf(project.universe,[0,10,15])
-    project['m']=fuzz.trimf(project.universe,[10,15,20])
-    project['h']=fuzz.trimf(project.universe,[15,20,30])
+    project['m']=fuzz.trimf(project.universe,[13,15,24])
+    project['h']=fuzz.trimf(project.universe,[22,26,30])
 
-    grade['l']=fuzz.trimf(grade.universe,[0,40,60])
-    grade['m']=fuzz.trimf(grade.universe,[40,60,80])
-    grade['h']=fuzz.trimf(grade.universe,[60,80,100])
+    grade['l']=fuzz.trimf(grade.universe,[0,40,50])
+    grade['m']=fuzz.trimf(grade.universe,[45,65,80])
+    grade['h']=fuzz.trimf(grade.universe,[75,85,100])
 
     practical.view()
     theory.view()
@@ -95,16 +95,16 @@ def fuzzy_calculator():
     rule53= ctrl.Rule( theory['m'] & practical['h'] & attendance['h'] & project['m'] , grade['h'])
     rule54= ctrl.Rule( theory['m'] & practical['h'] & attendance['h'] & project['h'] , grade['h'])
 
-    rule55= ctrl.Rule( theory['h'] & practical['l'] & attendance['l'] & project['l'] , grade['l'])
-    rule56= ctrl.Rule( theory['h'] & practical['l'] & attendance['l'] & project['m'] , grade['l'])
-    rule57= ctrl.Rule( theory['h'] & practical['l'] & attendance['l'] & project['h'] , grade['l'])
-    rule58= ctrl.Rule( theory['h'] & practical['l'] & attendance['m'] & project['l'] , grade['l'])
+    rule55= ctrl.Rule( theory['h'] & practical['l'] & attendance['l'] & project['l'] , grade['m'])
+    rule56= ctrl.Rule( theory['h'] & practical['l'] & attendance['l'] & project['m'] , grade['m'])
+    rule57= ctrl.Rule( theory['h'] & practical['l'] & attendance['l'] & project['h'] , grade['m'])
+    rule58= ctrl.Rule( theory['h'] & practical['l'] & attendance['m'] & project['l'] , grade['m'])
     rule59= ctrl.Rule( theory['h'] & practical['l'] & attendance['m'] & project['m'] , grade['m'])
     rule60= ctrl.Rule( theory['h'] & practical['l'] & attendance['m'] & project['h'] , grade['m'])
-    rule61= ctrl.Rule( theory['h'] & practical['l'] & attendance['h'] & project['l'] , grade['l'])
+    rule61= ctrl.Rule( theory['h'] & practical['l'] & attendance['h'] & project['l'] , grade['m'])
     rule62= ctrl.Rule( theory['h'] & practical['l'] & attendance['h'] & project['m'] , grade['m'])
     rule63= ctrl.Rule( theory['h'] & practical['l'] & attendance['h'] & project['h'] , grade['m'])
-    rule64= ctrl.Rule( theory['h'] & practical['m'] & attendance['l'] & project['l'] , grade['l'])
+    rule64= ctrl.Rule( theory['h'] & practical['m'] & attendance['l'] & project['l'] , grade['m'])
     rule65= ctrl.Rule( theory['h'] & practical['m'] & attendance['l'] & project['m'] , grade['m'])
     rule66= ctrl.Rule( theory['h'] & practical['m'] & attendance['l'] & project['h'] , grade['m'])
     rule67= ctrl.Rule( theory['h'] & practical['m'] & attendance['m'] & project['l'] , grade['m'])
@@ -139,8 +139,88 @@ def fuzzy_calculator():
     out=wm.output['grade']
     print(out)
     grade.view(sim=wm)
+   
+
+def Recommendation_system():
+    stream='Science'
+    subjects_science=['physics','chemistry','biology','mathematics','English']
+    subjects_commerce=['Bussiness','Accounts','Economics','Mathematics','English']
+    subjects_Humanities=['History','Geography','Political Science','Physical Education','English']
+    final_marks=[80,83,80,99,83]
+    test_scores=[7,8,5,4,5]
+
+    recommendation=dict()
+    eligibility=sum(final_marks)/5
+    if(stream=='Science'):
+        #test for Engineering
+
+        if(eligibility>60 and final_marks[0]>60 and final_marks[1]>60 and final_marks[3]>60):
+            fuzz_score=(sub1+sub2+sub3)/3
+            recommendation[fuzz_score]='Engineering'
+        #test for Medical
+        if(eligibility>60 and final_marks[2]>60):
+            fuzz_score=(sub2+sub3)/2
+            recommendation[fuzz_score]='Medical'
+        #test for Bsc
+        if(eligibility>60 and final_marks[0]>60):
+            recommendation[sub1]='Bsc physics'
+        if(eligibility>60 and final_marks[1]>60):
+            recommendation[sub2]='Bsc chemistry'
+        if(eligibility>60 and final_marks[2]>60):
+            recommendation[sub3]='Bsc biology'
+        if(eligibility>60 and final_marks[3]>60):
+            recommendation[sub4]='Bsc mathematics'
+        if(eligibility>60 and final_marks[4]>60):
+            recommendation[sub4]='Bsc Computer Science'
+    elif (stream=='Science'):
+        #test for Bcom
+
+        if(eligibility>60 ):
+            fuzz_score=(sub1+sub2+sub3+sub4)/4
+            recommendation[fuzz_score]='Bcom'
+        #test for BBA
+        if(eligibility>60 and final_marks[0]>60):
+            fuzz_score=(sub1+sub2)/2
+            recommendation[fuzz_score]='BBA'
+        #test for Bachelor of Economics
+        if(eligibility>60 and final_marks[2]>60):
+            recommendation[sub3]='Bachelor of Economics'
+        #test for LLB
+        if(eligibility>60 and final_marks[4]>60):
+            fuzz_score=(sub3+sub5)/2
+            recommendation[fuzz_score]='LLB'
+        #test for CA
+        if(eligibility>60 and final_marks[1]>60):
+            fuzz_score=(sub2+sub3)/2
+            recommendation[fuzz_score]='CA'
+    else:
+        #test for BA
+
+        if(eligibility>60 ):
+            fuzz_score=(sub1+sub2+sub3+sub4)/4
+            recommendation[fuzz_score]='BA'
+        #test for Journalism and Mass Communication
+        if(eligibility>60 and final_score[2]>60 ):
+            recommendation[sub3]='Journalism and Mass Communication'
+        if(eligibility>60 ):
+            recommendation[sub5]='Fashion Design'
 
 
+    if(eligibility>50 and (sum(test_scores)/5) > 5):
+        fuzz_score=sub5
+        recommendation[sub5]='Animation and Graphics Design'
+
+
+    if(eligibility>60 and (sum(test_scores)/5) > 5 and final_marks[0]>60 and final_marks[1]>60 and final_marks[3]>60 and final_marks[4]>60):
+        fuzz_score=(sub1+sub2+sub3+sub4+sub5)/4
+        recommendation[sub5]='B.Ed'
+       
+    for i in sorted(recommendation):
+       print(recommendation[i],": ",i)
+    
+   
+    
+    
 
 
 def Home():
