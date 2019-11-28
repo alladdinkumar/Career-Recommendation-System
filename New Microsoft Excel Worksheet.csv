@@ -1,0 +1,121 @@
+S.no,college id,Name,NIRF Ranking,Fees(in lakhs)
+1,101,IIT Madras,1,9.38 Lakh
+2,102,IIT Delhi,2,4.47 Lakh
+3,103,IIT Bombay,3,8.55 Lakh
+4,104,IIT Kharagpur,4,8.34 Lakh
+5,105,IIT Khanpur,5,8.27 Lakh
+6,106,IIT Roorkee,6,8.42 Lakh
+7,107,IIT Guwahati,7,8.61 Lakh
+8,108,IIT Hyderabad,8,8.64 Lakh
+9,109,CEG-College of Engineering Guindy,9,8 Lakh
+10,110,NIT Trichy,10,7.42 Lakh
+,,,,
+1,111,SRCC-Shri Ram College of Commerce,1,"93,300"
+2,112,Hindu College,2,"16,275"
+3,113,Hansraj College,3,"60,945"
+4,114,Kirori Mai College-KMC,4,"27,510"
+5,115,Christ,5,2.45 Lakh
+6,116,Loyola College,6,"37,500"
+7,117,MCC-Madras Christian College,7,"40,000"
+8,118,St.Joseph's College of Commerce,8,2.06Lakh
+9,119,SVC-Sri Venkateswara College,9,"33,680"
+10,120,Atma Ram Sanatan Dharma College,10,"28,305"
+,,,,
+1,121,"All India Institute of Medical Sciences,New Delhi",1,1.6 Lakh
+2,122,"Postgraduate Institute of Medical Education and Research,Chandigarh",2,1.5 Lakh
+3,123,CMC Vellore-Christian Medical College,3,1.67 Lakh
+4,124,Sanjay Gandhi Postgraduate Institute of Medical Sciences,4,2.08 Lakh
+5,125,Amrita Vishwa Vidyapeetham,5,1.9 Lakh
+6,126,"Institute of Medical Sciences,BHU",6,1.54 Lakh
+7,127,KMC-Kasturba Medical College,7,1.45 Lakh
+8,128,JIPMER Puducherry,8,"34,500"
+9,129,ILBS Delhi-Institute of Liver and Biliary Sciences,9,1.2 Lakh
+10,130,KGMU-King Georges Medical University,10,1.1 Lakh
+,,,,
+1,131,NLSIU Bangalore-National Law School of India University,1,10 Lakh
+2,132,NLU Hyderabad-Nalsar University of Law,2,10.60 Lakh
+3,133,NLU kolkata-The west Bengal National University of Juridical Sciences,3,10.83 Lakh
+4,134,Law Center-1 University of Delhi,4,11 Lakh
+5,135,NLU Delhi(NLUD)-Natonal Law University,5,4.28 Lakh
+6,136,NLIU Bhopal-The National Law Institute University,6,11.41Lakh
+7,137,BHU-Bananras Hindu University,7,13 Lakh
+8,138,"Symbiosis International,Pune-Viman Nagar Campus",8,12.5 Lakh
+9,139,ILS Law College,9,1.89Lakh
+10,140,HNLU Raipur-Hidayatullah National Law University,10,6.70Lakh
+,,,,
+1,141,St.Stephen's College,1,1.05 Lakh
+2,142,Hindu College,2,"14,175"
+3,143,Miranda House,3,"21,690"
+4,144,Kirori Mal College-KMC,4,"27,660"
+5,145,MCC-Madras Christian College,5,"30,000"
+6,146,Hansraj College,6,"61,665"
+7,147,Loyola College,7,"45,000"
+8,148,Christ,8,2.42 Lakh
+9,149,Indraprastha College for Women,9,"49,335"
+10,150,Gargi College,10,"24,165"
+,,,,
+1,151,NIFT Navi Mumbai,1,"50,000"
+2,152,NIFT Delhi,2,"45,000"
+3,153,"Pearl Academy,New Delhi",3,1 Lakh
+4,154,NIFT Bengaluru,4,"51,000"
+5,155,NIFT Chennai,5,"43,000"
+6,156,NIFT Kolkata,6,"32,000"
+7,157,NIFT Hyderabad,7,"58,000"
+8,158,NIFT patna,8,"31,000"
+9,159,NIFT Mohali,9,"20,000"
+10,160,"NIFT-TEA college of Knitwear Fashion,Tirupur",10,"24,000"
+,,,,
+1,161,BHU-Banaras Hindu University,1,"35,000"
+2,162,Hansraj College,2,"45,000"
+3,163,Parul University,3,"90,000"
+4,164,IMS-Institute of Management Study,4,2.25 Lakh
+5,165,Maya Group of Colleges,5,1.5 Lakh
+6,166,Hindu College,6,1 Lakh
+7,167,Hindustan Institute of Maritime Training,7,9 Lakh
+8,168,"School of Education,Apeejay stya University",8,5.17 Lakh
+9,169,DU-Delhi University,9,4 Lakh
+10,170,Lovely Professional University,10,4.48 Lakh
+,,,,
+1,181,Christ University,1,5.08 Lakh
+2,182,"Madras Christian College(MCC),Chennai",2,"83,757"
+3,183,"Amity International Business School,Noida",3,2.20 Lakh
+4,184,"Banasthali University,Rajasthan",4,1.98 Lakh
+5,185,"Institute of Management Studies,Noida",5,3.74 Lakh
+6,186,"Mount Carmel College,Bengaluru",6,1.5 Lakh
+7,187,"Shri Narsee Monjee College of Commerce and Economics,Mumbai",7,1.5Lakh
+8,188,Wilson College,8,"10,745"
+9,189,"Lala Lajpat Rai College of Communication&Economics,Mumbai",9,1 Lakh
+10,190,"Shaheed Sukhdev College of Business Studies,Delhi(SSCBS)",10,"36,595"
+,,,,
+1,191,IIT Madras,1,9.38 Lakh
+2,192,IIT Delhi,2,4.47 Lakh
+3,193,IIT Bombay,3,8.55 Lakh
+4,194,IIT Kharagpur,4,8.34 Lakh
+5,195,IIT Khanpur,5,8.27 Lakh
+6,196,IIT Roorkee,6,8.42 Lakh
+7,197,IIT Guwahati,7,8.61 Lakh
+8,198,IIT Hyderabad,8,8.64 Lakh
+9,199,CEG-College of Engineering Guindy,9,8 Lakh
+10,200,NIT Trichy,10,7.42 Lakh
+,,,,
+1,201,St.Stephen's College,1,1.05 Lakh
+2,202,Hindu College,2,"14,175"
+3,203,Miranda House,3,"21,690"
+4,204,Kirori Mal College-KMC,4,"27,660"
+5,205,MCC-Madras Christian College,5,"30,000"
+6,206,Hansraj College,6,"61,665"
+7,207,Loyola College,7,"45,000"
+8,208,Christ,8,2.42 Lakh
+9,209,Indraprastha College for Women,9,"49,335"
+10,210,Gargi College,10,"24,165"
+,,,,
+1,211,BHU-Banaras Hindu University,1,"35,000"
+2,212,Hansraj College,2,"45,000"
+3,213,Parul University,3,"90,000"
+4,214,IMS-Institute of Management Study,4,2.25 Lakh
+5,215,Maya Group of Colleges,5,1.5 Lakh
+6,216,Hindu College,6,1 Lakh
+7,217,Hindustan Institute of Maritime Training,7,9 Lakh
+8,218,"School of Education,Apeejay stya University",8,5.17 Lakh
+9,219,DU-Delhi University,9,4 Lakh
+10,220,Lovely Professional University,10,4.48 Lakh
